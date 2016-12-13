@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
 
 namespace CreateListProject
 {
-    public class Program 
+    class AddToArray
     {
-       
-        static void Main(string[] args)
-        { 
-        }
     }
 }
