@@ -9,9 +9,10 @@ namespace CreateListProject
 {
     public class ListAttrubutes<T> //: IEnumerable
     {
-        int addValue;
+        int value;
         int numberItemsInArray;
         int maxIndex;
+        int indexerSlot;
         T[] masterArray;
         T[] temporaryArray;
 
@@ -41,9 +42,21 @@ namespace CreateListProject
             }
 
         }
-         public void CreateLargerArray()//you are here 
+
+        public T this [int number] //you are here
         {
-            T [] temporaryArray = new T [maxIndex * 2];
+                get
+                {
+                return masterArray[number];
+                }
+                set
+                {
+                masterArray[number] = value;
+                }
+            }
+        public void CreateLargerArray() 
+        {
+            T[] temporaryArray = new T[maxIndex * 2];
             for (int i = 0; i < numberItemsInArray; i++)
             {
                 temporaryArray[i] = masterArray[i];
@@ -52,11 +65,11 @@ namespace CreateListProject
             masterArray = temporaryArray;
 
         }
-        public void Add(T item) 
+        public void Add(T item)
         {
-            if(numberItemsInArray == MaxIndex)
+            if (numberItemsInArray == MaxIndex)
             {
-                CreateLargerArray();   
+                CreateLargerArray();
             }
             masterArray[numberItemsInArray] = item;
             numberItemsInArray++;
@@ -65,8 +78,7 @@ namespace CreateListProject
             //    Console.WriteLine(NumberItemsInArray);
             //}
         }
-
-        public bool Remove( T item)
+        public bool Remove(T item)//add temp array
         {
             masterArray[maxIndex] = item;
             for (int i = 0; i < numberItemsInArray; i++)
@@ -76,22 +88,33 @@ namespace CreateListProject
                     masterArray[i] = masterArray[i + 1];
                     numberItemsInArray--;
                     return true;
-                }             
+                }
             }
             return false;
         }
-        public IEnumerator GetEnumerator(T item)
+//        public IEnumerator.GetEnumerator(T item)
+//        {
+//          masterArray[maxIndex]
+//          for (int i = 0; i<masterArray.maxIndex; i++)
+//            {
+//                if (masterArray[i] == null)
+//                {
+//                    yield return i;
+
+//                }
+//            }
+//         }
+        public static ListAttrubutes<T> operator +(ListAttrubutes<T> attrubutesOne, ListAttrubutes<T> attrubutesTwo)
         {
-          masterArray[maxIndex]
-          for (int i = 0; i < masterArray.maxIndex; i++)
-            {
-                if (masterArray[i] == null)
-                {
-                    yield return i;
-
-                }
-            }
-
+        ListAttrubutes<T> addTwoListsTogether = new ListAttrubutes<T>();
+            addTwoListsTogether = attrubutesOne + attrubutesTwo;
+            return addTwoListsTogether;
+        }
+        public static ListAttrubutes<T> operator -(ListAttrubutes<T> attrubutesOne, ListAttrubutes<T> attrubutesTwo)
+        {
+            ListAttrubutes<T> subtractItems = new ListAttrubutes<T>();
+            subtractItems = attrubutesOne - attrubutesTwo;
+            return subtractItems;
         }
     }
 }
