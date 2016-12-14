@@ -11,7 +11,9 @@ namespace CreateListProject
     {
        
         static void Main(string[] args)
-        { 
+        {
+            ListAttrubutes<int> attrubutes = new ListAttrubutes<int>();
+            attrubutes.CreateLargerArray();
         }
     }
 }

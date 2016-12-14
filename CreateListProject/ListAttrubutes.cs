@@ -18,10 +18,9 @@ namespace CreateListProject
 
         public ListAttrubutes()
         {
-            numberItemsInArray = 0;
             maxIndex = 5;
             masterArray = new T[maxIndex];
-            temporaryArray = new T[maxIndex];
+            temporaryArray = new T[0];
         }
         public int MaxIndex
         {
@@ -31,10 +30,6 @@ namespace CreateListProject
             }
             set
             {
-                if(value == 5)
-                {
-                    maxIndex = value * 2;
-                }
                 maxIndex = value;
             }
         }
@@ -46,53 +41,58 @@ namespace CreateListProject
             }
 
         }
-         public void CreateLargerArray()//you are here
+         public void CreateLargerArray()//you are here 
         {
-            if (maxIndex < 5)
-            {
-                Console.WriteLine(NumberItemsInArray);
-            }
-
-            temporaryArray = masterArray;
-
-        }
-        public void ObjectToBeAddedArray(T item) //Need to test
-        {
+            T [] temporaryArray = new T [maxIndex * 2];
             for (int i = 0; i < numberItemsInArray; i++)
             {
-                
+                temporaryArray[i] = masterArray[i];
             }
+            maxIndex = maxIndex * 2;
+            masterArray = temporaryArray;
 
         }
-
-        public void AddObject(T numberItemsInArray)
+        public void Add(T item) 
         {
-
-          
+            if(numberItemsInArray == MaxIndex)
+            {
+                CreateLargerArray();   
+            }
+            masterArray[numberItemsInArray] = item;
+            numberItemsInArray++;
+            //for (int i = 0; i < numberItemsInArray; i++)
+            //{
+            //    Console.WriteLine(NumberItemsInArray);
+            //}
         }
-        public void ObjectsToBeRemoverFromArray() //Need to Test
+
+        public bool Remove( T item)
         {
+            masterArray[maxIndex] = item;
             for (int i = 0; i < numberItemsInArray; i++)
             {
-                return;
+                if (masterArray[i].Equals(item))
+                {
+                    masterArray[i] = masterArray[i + 1];
+                    numberItemsInArray--;
+                    return true;
+                }             
             }
+            return false;
         }
+        public IEnumerator GetEnumerator(T item)
+        {
+          masterArray[maxIndex]
+          for (int i = 0; i < masterArray.maxIndex; i++)
+            {
+                if (masterArray[i] == null)
+                {
+                    yield return i;
 
-       
-        //public IEnumerator GetEnumerator()
-        //{
+                }
+            }
 
-        //    masterArray[maxIndex]
-        //  for (int i = 0; i < masterArray.maxIndex; i++)
-        //    {
-        //        if (masterArray[i] == null)
-        //        {
-        //            yield return i;
-
-        //        }
-        //    }
-
-        //}
+        }
     }
 }
 //check for empty spots
