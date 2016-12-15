@@ -7,114 +7,109 @@ using System.Threading.Tasks;
 
 namespace CreateListProject
 {
-    public class ListAttrubutes<T> //: IEnumerable
+    public class ListAttrubutes<T> : IEnumerable
     {
-        int value;
-        int numberItemsInArray;
-        int maxIndex;
-        int indexerSlot;
+        int count;
+        int capacity;
         T[] masterArray;
         T[] temporaryArray;
 
 
         public ListAttrubutes()
         {
-            maxIndex = 5;
-            masterArray = new T[maxIndex];
+            capacity = 5;
+            masterArray = new T[capacity];
             temporaryArray = new T[0];
         }
         public int MaxIndex
         {
             get
             {
-                return maxIndex;
+                return capacity;
             }
             set
             {
-                maxIndex = value;
+                capacity = value;
             }
         }
-        public int NumberItemsInArray
+        public int Count
         {
             get
             {
-                return numberItemsInArray;
+                return count;
             }
 
         }
 
-        public T this [int number] 
-            {
-                get
-                {
-                return masterArray[number];
-                }
-                set
-                {
-                masterArray[number] = value;
-                }
-            }
-        public void CreateLargerArray() 
+        public T this[int number]
         {
-            T[] temporaryArray = new T[maxIndex * 2];
-            for (int i = 0; i < numberItemsInArray; i++)
+            get
             {
-                temporaryArray[i] = masterArray[i];
+                return masterArray[number];
             }
-            maxIndex = maxIndex * 2;
+            set
+            {
+                masterArray[number] = value;
+            }
+        }
+        public void CreateLargerArray()
+        {
+            T[] temporaryArray = new T[capacity * 2];
+            for (int i = 0; i < count; i++)
+            {
+                temporaryArray[i] = masterArray[i] ;
+            }
+            capacity = capacity * 2;
             masterArray = temporaryArray;
 
         }
         public void Add(T item)
         {
-            if (numberItemsInArray == MaxIndex)
+            if (count == MaxIndex)
             {
                 CreateLargerArray();
             }
-            masterArray[numberItemsInArray] = item;
-            numberItemsInArray++;
+            masterArray[count] = item;
+            count++;
         }
-        public void Insert (int MaxIndex, T item)//you are here
+        public void Insert(T item)//you are here
         {
-            //temporaryArray = new T[5];
-            
             for (int i = 0; i < MaxIndex; i++)
-                {
+            {
                 Add(item);
-                }
             }
-            //masterArray[numberItemsInArray] = item;
-            //numberItemsInArray++;
-        
-        public bool Remove(T item)//add temp array
+        }
+        //masterArray[numberItemsInArray] = item;
+        //numberItemsInArray++;
+
+        public bool Remove(T item) 
         {
-            //masterArray[maxIndex] = item;
-            for (int i = 0; i < numberItemsInArray; i++)
+            for (int i = 0; i < count; i++)
             {
                 if (masterArray[i].Equals(item))
                 {
                     masterArray[i] = masterArray[i + 1];
-                    numberItemsInArray--;
+                    count++;
                     return true;
                 }
             }
             return false;
         }
-        //        public IEnumerator.GetEnumerator(T item)
-        //        {
-        //          masterArray[maxIndex]
-        //          for (int i = 0; i<masterArray.maxIndex; i++)
-        //            {
-        //                if (masterArray[i] == null)
-        //                {
-        //                    yield return i;
-
-        //                }
-        //            }
-        //         }
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return masterArray[i];
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+        //you are here
         public static ListAttrubutes<T> operator +(ListAttrubutes<T> attrubutesOne, ListAttrubutes<T> attrubutesTwo)
         {
-        ListAttrubutes<T> addTwoListsTogether = new ListAttrubutes<T>();
+            ListAttrubutes<T> addTwoListsTogether = new ListAttrubutes<T>();
             addTwoListsTogether = attrubutesOne + attrubutesTwo;
             return addTwoListsTogether;
         }
@@ -126,6 +121,33 @@ namespace CreateListProject
         }
     }
 }
+
+
+
+//public int? Count()
+//{
+//    int length = count;
+//    if (length == 0)
+//    {
+//        return null;
+//    }
+
+//    else
+//    {
+//        for (int i = 0; i < count; i++)
+//        {
+//            length = count;
+//        }
+//        return length;
+//    }
+//}
+
+
+//}
+
+
+
+//}
 //check for empty spots
 //create larger array
 //copy from first(old) array

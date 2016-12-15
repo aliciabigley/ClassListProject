@@ -94,27 +94,66 @@ namespace CreateListTest
             //assert
             Assert.IsFalse(false, "Dog" );
         }
-        //public void RemoveintTest()// you are here
-        //{
-        //    //arrange
-        //    ListAttrubutes<int> list = new ListAttrubutes<int>();
-        //    int[] testIntArray = new int[5] { 1, 2, 3, 4, 5, };
 
-        //    //act
-        //    list.Remove(3); 
-        //    bool removeInt = false;
-        //    for ()
-        //    {
-        //        if removeInt == 3;
-        //    }
-            
+        [TestMethod]
+        public void CountIntTest()
+        {
+            //arrange
+            ListAttrubutes<int> list = new ListAttrubutes<int>() { 1, 2, 3, 4, 5 };
+            int expectedResult = 5;
+            //act
+            int actualResult = list.Count;
+            //assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void CountStringTest()
+        {
+            ListAttrubutes<string> list = new ListAttrubutes<string>() { "Dog", "Bird", "Lizard" };
+            int expectedResult = 3;
+            //act
+            int actualResult = list.Count;
+            //assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void CountDoubtTest()
+        {
+            //arrange
+            ListAttrubutes<double> list = new ListAttrubutes<double>() { 123.14, 334.54, 7732.00, 421.34, 10 };
+            int expectedResult = 3;
+            //act
+            int actualResult = list.Count;
+            //assert
+            Assert.AreNotEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void RemoveIntTest()
+        {
+            //arrange
+            ListAttrubutes<int> list = new ListAttrubutes<int>();
+            int[] testIntArray = new int[5] { 1, 2, 3, 4, 5 };           
+            //act
+            list.Remove(3);
+            //assert
+            Assert.IsFalse(false);
+        }
+        [TestMethod]
+        public void InsertStingTest()
+        {
+            //arrange
+            ListAttrubutes<string> list = new ListAttrubutes<string>() { "Dog", "Bird", "Lizard" };
 
+            //act
+            list.Insert("Cat");
+            string expectedResult = "Cat";
+            //assert
+            Assert.AreSame(expectedResult, "Cat");
 
-        //    //assert
-        //    Assert.IsFalse(false, 3);
-        //}
+        }
     }
 }
+
 //arrange
 //act
 //assert

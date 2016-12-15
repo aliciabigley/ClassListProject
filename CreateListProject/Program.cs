@@ -12,20 +12,26 @@ namespace CreateListProject
        
         static void Main(string[] args)
         {
-            ListAttrubutes<int> attrubutesOne = new ListAttrubutes<int>();
+            ListAttrubutes<int> attrubutesOne = new ListAttrubutes<int>() { 1, 2 };
             ListAttrubutes<int> attrubutesTwo = new ListAttrubutes<int>();
 
-            attrubutesOne.Add(1);
-            attrubutesOne.Add(2);
-            attrubutesOne.Add(3);
-            attrubutesOne.Add(4);
-            attrubutesOne.Add(5);
-            attrubutesOne.Add(6);
-            attrubutesOne.Add(7);
-            attrubutesOne.Add(8);
-            attrubutesOne.Add(9);
-            attrubutesOne.Add(10);
+            //attrubutesOne.Add(1);
+            //attrubutesOne.Add(2);
+            //attrubutesOne.Add(3);
+            //attrubutesOne.Add(5);
+            //attrubutesOne.Remove(3);
+            //attrubutesOne.Add(6);
+            //attrubutesOne.Add(7);
+            //attrubutesOne.Add(8);
+            //attrubutesOne.Add(9);
+            //attrubutesOne.Add(10);
+            //Console.WriteLine();
+            //Console.ReadKey();
 
+            foreach (int x in attrubutesOne)
+            {
+                Console.WriteLine(x);
+            }
         }
     }
 }
