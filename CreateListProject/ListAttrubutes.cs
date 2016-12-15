@@ -11,6 +11,7 @@ namespace CreateListProject
     {
         int count;
         int capacity;
+        string array;
         T[] masterArray;
         T[] temporaryArray;
 
@@ -52,6 +53,7 @@ namespace CreateListProject
                 masterArray[number] = value;
             }
         }
+
         public void CreateLargerArray()
         {
             T[] temporaryArray = new T[capacity * 2];
@@ -72,13 +74,13 @@ namespace CreateListProject
             masterArray[count] = item;
             count++;
         }
-        public void Insert(T item)//you are here
-        {
-            for (int i = 0; i < MaxIndex; i++)
-            {
-                Add(item);
-            }
-        }
+        //public void Insert(T item)
+        //{
+        //    for (int i = 0; i < MaxIndex; i++)
+        //    {
+        //        Add(item);
+        //    }
+        //}
         //masterArray[numberItemsInArray] = item;
         //numberItemsInArray++;
 
@@ -92,6 +94,7 @@ namespace CreateListProject
                     count++;
                     return true;
                 }
+
             }
             return false;
         }
@@ -107,6 +110,16 @@ namespace CreateListProject
             return this.GetEnumerator();
         }
         //you are here
+        public string ToString()
+        {
+
+            for (int i = 0; i < masterArray.Length; i++)
+            {
+                array = array + " " + masterArray[i];
+            }
+            return array;
+        }
+
         public static ListAttrubutes<T> operator +(ListAttrubutes<T> attrubutesOne, ListAttrubutes<T> attrubutesTwo)
         {
             ListAttrubutes<T> addTwoListsTogether = new ListAttrubutes<T>();

@@ -84,15 +84,15 @@ namespace CreateListTest
         {
             //arrange
             ListAttrubutes<int> list = new ListAttrubutes<int>();
-            string [] testIntArray = new string[5] {"Dog","Bird", "Lizard", "Frog", "Cat",};
-            
+            string[] testIntArray = new string[5] { "Dog", "Bird", "Lizard", "Frog", "Cat", };
+
             //act
 
             list.Remove(1);
 
 
             //assert
-            Assert.IsFalse(false, "Dog" );
+            Assert.IsFalse(false, "Dog");
         }
 
         [TestMethod]
@@ -132,24 +132,11 @@ namespace CreateListTest
         {
             //arrange
             ListAttrubutes<int> list = new ListAttrubutes<int>();
-            int[] testIntArray = new int[5] { 1, 2, 3, 4, 5 };           
+            int[] testIntArray = new int[5] { 1, 2, 3, 4, 5 };
             //act
             list.Remove(3);
             //assert
             Assert.IsFalse(false);
-        }
-        [TestMethod]
-        public void InsertStingTest()
-        {
-            //arrange
-            ListAttrubutes<string> list = new ListAttrubutes<string>() { "Dog", "Bird", "Lizard" };
-
-            //act
-            list.Insert("Cat");
-            string expectedResult = "Cat";
-            //assert
-            Assert.AreSame(expectedResult, "Cat");
-
         }
     }
 }

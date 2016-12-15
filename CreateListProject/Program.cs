@@ -14,7 +14,8 @@ namespace CreateListProject
         {
             ListAttrubutes<int> attrubutesOne = new ListAttrubutes<int>() { 1, 2 };
             ListAttrubutes<int> attrubutesTwo = new ListAttrubutes<int>();
-
+            ListAttrubutes<string> attrubutesThree = new ListAttrubutes<string>() { "Dog", "Bird", "Lizard" };
+            attrubutesThree.ToString();
             //attrubutesOne.Add(1);
             //attrubutesOne.Add(2);
             //attrubutesOne.Add(3);
