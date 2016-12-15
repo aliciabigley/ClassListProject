@@ -43,8 +43,8 @@ namespace CreateListProject
 
         }
 
-        public T this [int number] //you are here
-        {
+        public T this [int number] 
+            {
                 get
                 {
                 return masterArray[number];
@@ -73,14 +73,22 @@ namespace CreateListProject
             }
             masterArray[numberItemsInArray] = item;
             numberItemsInArray++;
-            //for (int i = 0; i < numberItemsInArray; i++)
-            //{
-            //    Console.WriteLine(NumberItemsInArray);
-            //}
         }
+        public void Insert (int MaxIndex, T item)//you are here
+        {
+            //temporaryArray = new T[5];
+            
+            for (int i = 0; i < MaxIndex; i++)
+                {
+                Add(item);
+                }
+            }
+            //masterArray[numberItemsInArray] = item;
+            //numberItemsInArray++;
+        
         public bool Remove(T item)//add temp array
         {
-            masterArray[maxIndex] = item;
+            //masterArray[maxIndex] = item;
             for (int i = 0; i < numberItemsInArray; i++)
             {
                 if (masterArray[i].Equals(item))
@@ -92,18 +100,18 @@ namespace CreateListProject
             }
             return false;
         }
-//        public IEnumerator.GetEnumerator(T item)
-//        {
-//          masterArray[maxIndex]
-//          for (int i = 0; i<masterArray.maxIndex; i++)
-//            {
-//                if (masterArray[i] == null)
-//                {
-//                    yield return i;
+        //        public IEnumerator.GetEnumerator(T item)
+        //        {
+        //          masterArray[maxIndex]
+        //          for (int i = 0; i<masterArray.maxIndex; i++)
+        //            {
+        //                if (masterArray[i] == null)
+        //                {
+        //                    yield return i;
 
-//                }
-//            }
-//         }
+        //                }
+        //            }
+        //         }
         public static ListAttrubutes<T> operator +(ListAttrubutes<T> attrubutesOne, ListAttrubutes<T> attrubutesTwo)
         {
         ListAttrubutes<T> addTwoListsTogether = new ListAttrubutes<T>();
