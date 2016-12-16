@@ -11,7 +11,6 @@ namespace CreateListProject
     {
         int count;
         int capacity;
-        string array;
         T[] masterArray;
         T[] temporaryArray;
 
@@ -53,18 +52,6 @@ namespace CreateListProject
                 masterArray[number] = value;
             }
         }
-
-        public void CreateLargerArray()
-        {
-            T[] temporaryArray = new T[capacity * 2];
-            for (int i = 0; i < count; i++)
-            {
-                temporaryArray[i] = masterArray[i] ;
-            }
-            capacity = capacity * 2;
-            masterArray = temporaryArray;
-
-        }
         public void Add(T item)
         {
             if (count == MaxIndex)
@@ -74,15 +61,17 @@ namespace CreateListProject
             masterArray[count] = item;
             count++;
         }
-        //public void Insert(T item)
-        //{
-        //    for (int i = 0; i < MaxIndex; i++)
-        //    {
-        //        Add(item);
-        //    }
-        //}
-        //masterArray[numberItemsInArray] = item;
-        //numberItemsInArray++;
+        public void CreateLargerArray()
+        {
+            T[] temporaryArray = new T[capacity * 2];
+            for (int i = 0; i < count; i++)
+            {
+                temporaryArray[i] = masterArray[i];
+            }
+            capacity = capacity * 2;
+            masterArray = temporaryArray;
+
+        }
 
         public bool Remove(T item) 
         {
@@ -109,15 +98,14 @@ namespace CreateListProject
         {
             return this.GetEnumerator();
         }
-        //you are here
-        public string ToString()
+        public override string ToString()
         {
-
-            for (int i = 0; i < masterArray.Length; i++)
+            string changeToString = "";
+            for (int i = 0; i < Count; i++)
             {
-                array = array + " " + masterArray[i];
+                changeToString = changeToString + masterArray[i] + " ";
             }
-            return array;
+            return changeToString;
         }
 
         public static ListAttrubutes<T> operator +(ListAttrubutes<T> attrubutesOne, ListAttrubutes<T> attrubutesTwo)

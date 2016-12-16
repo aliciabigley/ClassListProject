@@ -12,7 +12,7 @@ namespace CreateListTest
         {
             //arrange
             ListAttrubutes<int> list = new ListAttrubutes<int>();
-
+            int expectedResult = 22;
             list.Add(5);
             list.Add(3);
             list.Add(5);
@@ -22,17 +22,17 @@ namespace CreateListTest
             list.Add(100);
 
             //assert
-            Assert.AreEqual(22, list[3]);
+            Assert.AreEqual(expectedResult, list[3]);
         }
         [TestMethod]
         public void AddTestLargeNumber()
         {
             //arrange
             ListAttrubutes<int> list = new ListAttrubutes<int>();
-
+            int expectedResult = 2147483647;
             list.Add(2147483647);
             //assert
-            Assert.AreEqual(2147483647, list[0]);
+            Assert.AreEqual(expectedResult, list[0]);
         }
         [TestMethod]
         public void AddTestNegNumber()
@@ -40,6 +40,7 @@ namespace CreateListTest
             //arrange
             ListAttrubutes<int> list = new ListAttrubutes<int>();
 
+            int expectedResult = -22;
             list.Add(-5);
             list.Add(-3);
             list.Add(-5);
@@ -49,13 +50,14 @@ namespace CreateListTest
             list.Add(-100);
 
             //assert
-            Assert.AreEqual(-22, list[3]);
+            Assert.AreEqual(expectedResult, list[3]);
         }
         [TestMethod]
         public void AddString()
         {
             //arrange
             ListAttrubutes<string> list = new ListAttrubutes<string>();
+            string expectedResult = "Test";
 
             //act
             list.Add("words");
@@ -63,32 +65,32 @@ namespace CreateListTest
 
 
             //assert
-            Assert.AreNotEqual("Test", list[0]);
+            Assert.AreNotSame(expectedResult, list[0]);
         }
         [TestMethod]
         public void AddTestDouble()
         {
             //arrange
             ListAttrubutes<double> list = new ListAttrubutes<double>();
-
+            double expectedResult = 19.55;
             //act
             list.Add(.32);
             list.Add(19.55);
 
 
             //assert
-            Assert.AreNotEqual(19.55, list[0]);
+            Assert.AreNotEqual(expectedResult, list[0]);
         }
         [TestMethod]
         public void RemoveStringTest()
         {
             //arrange
-            ListAttrubutes<int> list = new ListAttrubutes<int>();
+            ListAttrubutes<string> list = new ListAttrubutes<string>();
             string[] testIntArray = new string[5] { "Dog", "Bird", "Lizard", "Frog", "Cat", };
 
             //act
 
-            list.Remove(1);
+            list.Remove("dog");
 
 
             //assert
@@ -137,6 +139,17 @@ namespace CreateListTest
             list.Remove(3);
             //assert
             Assert.IsFalse(false);
+        }
+        [TestMethod]
+        public void ToStringTest()
+        {
+            //arrange
+            ListAttrubutes<string> list = new ListAttrubutes<string>() { "Dog", "Bird", "Lizard" };
+            //act
+            string actualResult = list.ToString();
+            string expectedResult = "Dog Bird Lizard ";
+            //assert
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }
